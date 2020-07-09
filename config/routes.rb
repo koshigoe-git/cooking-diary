@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'toppages/index'
   #root to: トップページ指定
   root to: 'toppages#index'
 

@@ -1,0 +1,11 @@
+<% if @users.any? %>
+  <ul class="list-unstyled">
+    <% @users.each do |user| %>
+      <li class="media">
+        <h1><%= user.name %></h1>
+        <p><%= user.introduce %></p>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @users %>
+<% end %>
