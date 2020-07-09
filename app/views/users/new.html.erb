@@ -8,7 +8,7 @@
     <%= form_with(model: @user, local: true) do |f| %>
       <!-- 変数model = f.objectのこと,ここには8行目の@user(=@user,users#new)が入る -->
       <!-- f.object(=@user,users#new)で1つでもエラーがあれば表示される-->
-      <%= render "layouts/error_messages" model: f.object %>
+      <%= render "layouts/error_messages", model: f.object %>
       
       <div class="form-group">
         <%= f.label :name, '名前' %>
@@ -35,7 +35,12 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 
-      <%= f.submit 'Sign up', class: 'btn btn-warning btn-block' %>
+      <%= f.submit 'Sign up', class: 'mb-3 btn btn-warning btn-block' %>
     <% end %>
+    
+    <div class="text-center">
+      <%= link_to 'アカウントをお持ちの方はこちら', login_path %>
+    </div>
+    
   </div>
 </div>
