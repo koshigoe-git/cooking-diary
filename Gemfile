@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #pagination
 gem "kaminari"
+
+#デバッグツール
+gem 'pry-byebug', group: :development

@@ -1,8 +1,13 @@
-<div class="center jumbotron bg-white text-warning">
-  <div class="text-center">
-    <h1>Let's enjoy cooking!!</h1>
-    <p>毎日の料理を楽しもう</p>
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-warning" %>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ<%= current_user.name %></p>
+<% else %>
+  <div class="center jumbotron bg-white text-warning">
+    <div class="text-center">
+      <h1>Let's enjoy cooking!!</h1>
+      <p>毎日の料理を楽しもう</p>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-warning" %>
+    </div>
   </div>
-</div>
+<% end %>
+
  

@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
 
   def create
     email = params[:session][:email].downcase
-    password = params[:session][:email]
+    password = params[:session][:password]
     if login(email,password)
-      flash[:notice] = "ログインが完了しました。"
+      flash[:success] = "ログインが完了しました。"
       #createアクション実行後に更にusers#showアクションが実行され、show.html.erbを呼び出す
       #redirect_toの@userは省略形,本来は"/users/show(@user =表示したいUserクラスのインスタンス)" or user_path(@user)となっている
       redirect_to @user
@@ -16,7 +16,10 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
+    session[:user_id] = nil
+    flash[:success] = "ログアウトしました。"
+    redirect_to root_url
   end
   
   def login(email,password)

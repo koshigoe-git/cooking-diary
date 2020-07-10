@@ -1,15 +1,27 @@
 <header class="mb-4">
+  <!-- navbar-expandはメニューの折りたたみ設定 -->
+  <!-- smサイズ（最小で576px）未満の画面幅の場合にメニューの表示の仕方が変わる -->
   <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
+    <!-- navbar-brand"を書くとボタンは左側 -->
     <a class="navbar-brand" href="/">cooking diary</a>
+    <!--折りたたみ時の3本線ボタン設定-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+    <!-- <ul class="navbar-nav"> の要素を囲う親要素の<div>を作成する。-->
+    <!-- その <div> に collapse と navbar-collapse クラスを追加する -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <li class="nav-item"><%= link_to "signup", signup_path, class: "nav-link text-white" %></li>
-        <li class="nav-item"><%= link_to "login", login_path, class: "nav-link text-white" %></li>
+        <% if logged_in? %>
+          <!--<li class="nav-item">< %= link_to "post", post_path, class: "nav-link text-white" %></li>-->
+          <li class="nav-item"><%= link_to "users", users_path, class: "nav-link text-white" %></li>
+          <li class="nav-item"><%= link_to "logout", logout_path, method: :delete, class: "nav-link text-white" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "signup", signup_path, class: "nav-link text-white" %></li>
+          <li class="nav-item"><%= link_to "login", login_path, class: "nav-link text-white" %></li>
+        <% end %>
       </ul>
     </div>
   </nav>
 </header>
+
