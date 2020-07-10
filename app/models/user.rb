@@ -7,5 +7,8 @@ class User < ApplicationRecord
                     #重複は不可（大文字小文字関係なし）
                     uniqueness: { case_sensitive: false }
   validates :introduce, presence: true, length: { maximum: 25 }
+  
   has_secure_password
+  
+  has_many :posts
 end

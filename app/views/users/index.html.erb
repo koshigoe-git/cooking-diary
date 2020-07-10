@@ -1,11 +1,25 @@
-<% if @users.any? %>
+<!--micropostの_users.html.erb参照-->
+<!-- if @users.any?について -->
+<!-- users（Userのモデル）が1つでもあればtrueになり、if文の中身を実行 -->
+<!-- users（Userのモデル）が1つも無ければfalseになり、if文の中身は実行されない -->
+<%if @users.any? %>
+  <!-- list-unstyled:マーク(先頭の・)無しリスト-->
   <ul class="list-unstyled">
+   
     <% @users.each do |user| %>
-      <li class="media">
-        <h1><%= user.name %></h1>
-        <p><%= user.introduce %></p>
+      <li>
+        <div>
+
+          <!--usersテーブルの各カラムデータを表示-->
+          <div><%= user.name %></div>
+          <div><%= user.introduce %></div>
+          <!-- route作成時に同時生成されたパスメソッドuser_path(user)でusers#showに移動 -->
+          <div class="mb-4"><p><%= link_to "view diary", user_path(user) %></p></div>
+       
+        </div>
       </li>
+   
     <% end %>
   </ul>
-  <%= paginate @users %>
+  <% paginate @users %>
 <% end %>

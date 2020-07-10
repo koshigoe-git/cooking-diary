@@ -1,13 +1,22 @@
-<% if logged_in? %>
-  <p>ログイン完了ユーザ<%= current_user.name %></p>
-<% else %>
   <div class="center jumbotron bg-white text-warning">
     <div class="text-center">
       <h1>Let's enjoy cooking!!</h1>
       <p>毎日の料理を楽しもう</p>
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-warning" %>
+
+      <!--グリッド(col-)はcontainerクラスとrowクラスのブロック要素を記述後使用>-->
+      <div class="container">
+        <!-- justify-content-sm-centerはcolが中央に配置させる設定-->
+        <div class="row justify-content-sm-center">
+          <div class="col-sm-3">
+            <P>会員の方はこちら</P>
+            <%= link_to "login", login_path, class: "btn btn-lg btn-warning" %>
+          </div>
+          <div class="col-sm-3">
+            <P>初めての方はこちら</P>
+            <%= link_to "signup", signup_path, class: "btn btn-lg btn-warning" %>
+          </div>
+        </div>
+      </div>
+     
     </div>
   </div>
-<% end %>
-
- 

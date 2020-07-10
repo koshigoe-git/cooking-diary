@@ -1,7 +1,7 @@
 <section>
   <div class="text-left">
-    <h1><%= @user.name %>のcooking diary</h1>
-    <p>レシピ数：（カウント）</p>
+    <h1><%= @user.name %>'s cooking diary</h1>
+    <p>レシピ数：<%= @counts_post %></p>
     <p>自己紹介<br><%= @user.introduce %></p>
   </div>
 </section>
@@ -10,11 +10,11 @@
 <div class="row">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title"><%= @user.created_at %></h3>
+      <h3 class="card-title">料理名</h3>
     </div>
     <div class="card-body">
       <p>写真を追加</p>
-      <p>料理名を追加</p>
+      <p>投稿日を追加</p>
       <p>いいねを追加</p>
     </div>
   </div>

@@ -13,7 +13,9 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <!--<li class="nav-item">< %= link_to "post", post_path, class: "nav-link text-white" %></li>-->
+          <!--user_path(@user)では無理（userscontroller経由じゃないから？←解明）-->
+          <li class="nav-item"><%= link_to "my_diary", user_path(current_user), class: "nav-link text-white" %></li> 
+          <li class="nav-item"><%= link_to "post", new_post_path, class: "nav-link text-white" %></li>
           <li class="nav-item"><%= link_to "users", users_path, class: "nav-link text-white" %></li>
           <li class="nav-item"><%= link_to "logout", logout_path, method: :delete, class: "nav-link text-white" %></li>
         <% else %>
