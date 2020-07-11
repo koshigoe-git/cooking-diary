@@ -6,15 +6,22 @@
   </div>
 </section>
 
-<div class="row">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">料理名</h3>
-    </div>
-    <div class="card-body">
-      <p>写真を追加</p>
-      <p>投稿日を追加</p>
-      <p>いいねを追加</p>
-    </div>
-  </div>
-</div>
+<%if @posts.any? %>
+    <!-- posts一覧を取得し、それぞれの投稿情報を変数postに入れて表示-->
+    <% @posts.each do |post| %>
+     <div class="container">
+       <div class="row">
+        <div class="card col-sm-3">
+          <div><%= post.title %></div>
+          <div><%= post.image %></div>
+          <div><%= post.created_at %></div>
+          <p>いいねを追加</p>
+        </div>
+       </div>
+     </div>
+    <% end %>
+    
+  <% paginate @posts %>
+<% end %>
+
+<!---->

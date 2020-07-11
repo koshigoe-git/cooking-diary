@@ -60,4 +60,5 @@ gem "kaminari"
 #デバッグツール
 gem 'pry-byebug', group: :development
 
+#画像をアップロード
 gem 'carrierwave'
