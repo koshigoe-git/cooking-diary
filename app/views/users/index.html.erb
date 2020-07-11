@@ -6,15 +6,17 @@
   <!-- list-unstyled:マーク(先頭の・)無しリスト-->
   <ul class="list-unstyled">
    
+    <!-- users一覧を取得し、それぞれのユーザ情報を変数userに入れて表示-->
     <% @users.each do |user| %>
       <li>
         <div>
 
           <!--usersテーブルの各カラムデータを表示-->
-          <div><%= user.name %></div>
-          <div><%= user.introduce %></div>
+          <div class="m-1">ユーザ名：<%= user.name %></div>
+          <div class="m-1">自己紹介：<%= user.introduce %></div>
+          <div class="m-1">料理写真：<%= user.posts.count %>枚</div>
           <!-- route作成時に同時生成されたパスメソッドuser_path(user)でusers#showに移動 -->
-          <div class="mb-4"><p><%= link_to "view diary", user_path(user) %></p></div>
+          <div class="mt-1 ml-1 mb-4 mr-1"><p><%= link_to "view cooking diary", user_path(user) %></p></div>
        
         </div>
       </li>
