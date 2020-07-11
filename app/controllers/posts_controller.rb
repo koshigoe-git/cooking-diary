@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿が完了しました。"
       #createアクション実行後に更にusers#showアクションが実行され、show.html.erbを呼び出す
       #redirect_toの@userは省略形,本来は"/users/show(@user =表示したいUserクラスのインスタンス)" or user_path(@user)となっている
-      redirect_to @user
+      redirect_to root_url
     else
       flash.now[:danger] = "投稿に失敗しました。"
       render :new
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def destroy
     #@micropostをどこかで定義する必要がある
-    @micropost.destroy
+    @post.destroy
     flash[:success] = "投稿を削除しました。"
     #fallback_location: root_path は、戻るべきページがない場合には root_path に戻る仕様
     redirect_back(fallback_location: root_path)
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   
   #StrongPrameter
   def post_params
-    params.require(:post).permit(:title, :image_name)
+    params.require(:post).permit(:title, :image)
   end
   
   #削除しようとしているPostが本当にログインユーザが所有しているものかを確認

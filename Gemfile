@@ -59,3 +59,5 @@ gem "kaminari"
 
 #デバッグツール
 gem 'pry-byebug', group: :development
+
+gem 'carrierwave'
