@@ -1,4 +1,4 @@
-<%= render "users/users", user: @user %>
+<%= render "users/users", user: current_user %>
 
 <%if @posts.any? %>
     <!-- posts一覧を取得し、それぞれの投稿情報を変数postに入れて表示-->
@@ -8,8 +8,8 @@
         <% @posts.each do |post| %>
           <div class="col-sm-3">
            <div>
-             <!-- 思ったところにページが飛ばない -->
-             <%= link_to post.title, post_path(post.id) %>
+             <!-- リンク先はpost_path(post)の省略形 -->
+             <%= link_to post.title, post %>
            </div>
            <% if post.image? %>
              <%= image_tag post.image.url, :size =>'250x250' %>

@@ -2,7 +2,7 @@
   <div class="row">
     
     <div class="col-sm-6">
-      <%= render "users/users", user: @user %>
+      <%= render "users/users", user: current_user %>
     </div>
     
     <div class="col-sm-6">
@@ -12,7 +12,7 @@
       <% end %>
       <div><%= @post.created_at %></div>
       <%= render "favorites/likes_button", post: @post %>
-      <%= post.favorites.count %>
+      <%= @post.favorites.count %>
     </div>
     
   </div>
