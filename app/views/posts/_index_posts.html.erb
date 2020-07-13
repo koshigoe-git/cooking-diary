@@ -1,0 +1,19 @@
+<h1 class="text-center text-warning">-----新着料理一覧-----</h1>
+  <div class="container">
+    <div class="row">
+      <% posts.each do |post| %>
+        <div class="col-sm-3">
+          <div><%= post.title %></div>
+          <% if post.image? %>
+            <%= image_tag post.image.url, :size =>'250x250' %>
+          <% end %>
+          <div><%= post.created_at %></div>
+          <div class="mb-4">
+            <%= render "favorites/likes_button", post: post %>
+            <%= post.favorites.count %>
+          </div>
+          
+        </div>
+      <% end %>
+    </div>
+  </div>

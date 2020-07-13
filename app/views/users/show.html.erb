@@ -1,31 +1,26 @@
-<section>
-  <div class="text-left">
-    <h1><%= @user.name %>'s cooking diary</h1>
-    <p>料理写真：<%= @counts_post %>枚</p>
-    <p>自己紹介<br><%= @user.introduce %></p>
-  </div>
-</section>
+<%= render "users/users", user: @user %>
 
 <%if @posts.any? %>
     <!-- posts一覧を取得し、それぞれの投稿情報を変数postに入れて表示-->
-    <% @posts.each do |post| %>
-     <div class="container">
-       <div class="row">
-         <div class="col-sm-3">
-           <div><%= post.title %></div>
-           
+    
+    <div class="container">
+      <div class="row">
+        <% @posts.each do |post| %>
+          <div class="col-sm-3">
+           <div>
+             <!-- 思ったところにページが飛ばない -->
+             <%= link_to post.title, post_path(post.id) %>
+           </div>
            <% if post.image? %>
              <%= image_tag post.image.url, :size =>'250x250' %>
            <% end %>
-           
            <div><%= post.created_at %></div>
-           
-           <p>いいねを追加</p>
-          
+           <%= render "favorites/likes_button", post: post %>
+           <%= post.favorites.count %>
           </div>
-       </div>
-     </div>
-    <% end %>
-    
+        <% end %>
+      </div>
+    </div>
+
   <% paginate @posts %>
 <% end %>

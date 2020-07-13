@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
   end
   
   def counts(user)
-    @counts_post = user.posts.count
+    @count_posts = user.posts.count
+    @count_favorites = user.favorites.count
+    #「いいね」を押してくれたユーザーの数を表示させたい
+    #@count_fovorite_users = favorite.user.count
   end
 end

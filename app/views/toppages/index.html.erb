@@ -1,10 +1,21 @@
 <% if logged_in? %>
-
-<% else %>
-  <div class="center jumbotron bg-white text-warning">
+  <div class="bg-white text-warning">
     <div class="text-center">
-      <h1>Let's enjoy cooking!!</h1>
-      <p>毎日の料理を楽しもう</p>
+      <h1 class="display-1">Let's enjoy cooking!!</h1>
+      <p class="display-4">毎日の料理を楽しもう!!</p>
+      <p class="m-4">このサイトは日々の料理写真を共有することで、新たな料理や仲間との出会いを提供します。</p>
+      <div class="mb-4"><%= link_to "早速投稿する！", new_post_path, class: "btn btn-lg btn-warning" %></div>
+    </div>
+  </div>
+  <!--toppagesController内で@posts変数を定義しておく-->
+  <%= render "posts/index_posts", posts: @posts %>
+  
+<% else %>
+  <div class="bg-white text-warning">
+    <div class="text-center">
+      <h1 class="display-1">Let's enjoy cooking!!</h1>
+      <p class="display-4">毎日の料理を楽しもう!!</p>
+      <p class="m-4">このサイトは日々の料理写真を共有することで、新たな料理や仲間との出会いを提供します。</p>
 
       <!--グリッド(col-)はcontainerクラスとrowクラスのブロック要素を記述後使用>-->
       <div class="container">

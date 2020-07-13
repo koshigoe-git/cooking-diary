@@ -11,4 +11,24 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :posts
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: :post
+ 
+  #お気に入りは自分自身の投稿もして良いので、フォローのようにunlessメソッドは不要
+  def favorite(post)
+      self.favorites.find_or_create_by(post_id: post.id)
+  end
+
+  def unfavorite(post)
+    favorite = self.favorites.find_by(post_id: post.id)
+    favorite.destroy if favorite
+  end
+  #self.favorite_posts(自分がお気に入りしている投稿)により、お気に入りのpost達を取得
+  #include?に既にフォローしているか確認するメソッド
+  #よってお気に入りにしようとしているpostが既に含まれているか確認ししている
+  #含まれている場合には、true を返し、含まれていない場合には、false を返す。
+  def favorite_post?(post)
+    self.favorite_posts.include?(post)
+  end
+  
 end
