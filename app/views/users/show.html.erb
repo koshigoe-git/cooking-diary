@@ -1,4 +1,4 @@
-<%= render "users/users", user: current_user %>
+<%= render "users/users", user: @user %>
 
 <%if @posts.any? %>
     <!-- posts一覧を取得し、それぞれの投稿情報を変数postに入れて表示-->
