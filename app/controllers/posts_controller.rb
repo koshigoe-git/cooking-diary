@@ -32,10 +32,20 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+    
+    if @post.update(post_params)
+      flash[:success] = "編集が完了しました。"
+      redirect_to @post
+    else
+      flash.now[:danger] = "編集に失敗しました。"
+      render :edit
+    end
+    
   end
 
   def destroy
-    #@postをどこかで定義する必要がある
+    @post = Post.find(params[:id])
     @post.destroy
     flash[:success] = "投稿を削除しました。"
     #fallback_location: root_path は、戻るべきページがない場合には root_path に戻る仕様
