@@ -9,12 +9,12 @@
           <div class="col-sm-3">
             <div>
               <!-- リンク先はpost_path(post)の省略形 -->
-              <%= link_to post.title, post %>
+              料理名:<%= link_to post.title, post %>
             </div>
             <% if post.image? %>
               <%= image_tag post.image.url, :size =>'250x250' %>
             <% end %>
-            <div><%= post.created_at %></div>
+            <div>投稿日:<%= post.created_at.strftime("%Y年%m月%d日") %></div>
             <div class="row">
               <span class="ml-3"><%= render "favorites/likes_button", post: post %></span>
               <span class="ml-1"><%= post.favorites.count %></span>
