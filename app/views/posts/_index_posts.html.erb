@@ -3,17 +3,19 @@
     <div class="row">
       <% posts.each do |post| %>
         <div class="col-sm-3">
-          <div><%= post.title %></div>
+          <div class="mb-2"><%= link_to post.title, post %></div>
           <% if post.image? %>
             <%= image_tag post.image.url, :size =>'250x250' %>
           <% end %>
-          <div><%= post.created_at %></div>
-          <div class="mb-4">
-            <%= render "favorites/likes_button", post: post %>
-            <%= post.favorites.count %>
-          </div>
+          <div class="mb-4"><%= post.created_at %></div>
+          <!--エラー出るため一時コメントアウト状態-->
+          <!--<div class="mb-4">
+            < %= render "favorites/likes_button", post: post %>
+            < %= post.favorites.count %>
+          </div>-->
           
         </div>
       <% end %>
     </div>
   </div>
+  <div class="m-3"><%= paginate @posts %></div>

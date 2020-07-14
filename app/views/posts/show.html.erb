@@ -2,8 +2,7 @@
   <div class="row">
     
     <div class="col-sm-6">
-      <!-- current_userは名前がどのユーザもloginUserになってしまうので使用不可-->
-      < %= render "users/users", user: @user %>
+      <%= render "users/users", user: @post.user %>
     </div>
     
     <div class="col-sm-6">

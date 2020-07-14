@@ -7,20 +7,22 @@
       <div class="row">
         <% @posts.each do |post| %>
           <div class="col-sm-3">
-           <div>
-             <!-- リンク先はpost_path(post)の省略形 -->
-             <%= link_to post.title, post %>
-           </div>
-           <% if post.image? %>
-             <%= image_tag post.image.url, :size =>'250x250' %>
-           <% end %>
-           <div><%= post.created_at %></div>
-           <%= render "favorites/likes_button", post: post %>
-           <%= post.favorites.count %>
+            <div>
+              <!-- リンク先はpost_path(post)の省略形 -->
+              <%= link_to post.title, post %>
+            </div>
+            <% if post.image? %>
+              <%= image_tag post.image.url, :size =>'250x250' %>
+            <% end %>
+            <div><%= post.created_at %></div>
+            <div class="row">
+              <span class="ml-3"><%= render "favorites/likes_button", post: post %></span>
+              <span class="ml-1"><%= post.favorites.count %></span>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
 
-  <% paginate @posts %>
+  <div class="m-3"><%= paginate @posts %></div>
 <% end %>
