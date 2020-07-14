@@ -6,13 +6,15 @@
     </div>
     
     <div class="col-sm-6">
-      <div><%= @post.title %></div>
+      <div>料理名:<%= @post.title %></div>
       <% if @post.image? %>
         <%= image_tag @post.image.url, :size =>'500x500' %>
       <% end %>
-      <div><%= @post.created_at %></div>
-      <%= render "favorites/likes_button", post: @post %>
-      <%= @post.favorites.count %>
+      <div>投稿日:<%= @post.created_at.strftime("%Y年%m月%d日") %></div>
+      <div class="row">
+      <div class="ml-3"><%= render "favorites/likes_button", post: @post %></div>
+      <div class="ml-1"><%= @post.favorites.count %></div>
+      </div>
     </div>
     
   </div>

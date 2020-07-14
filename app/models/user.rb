@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates :introduce, presence: true, length: { maximum: 25 }
   
   has_secure_password
+  #有効なパスワード = アルファベットと数字のみ（=仮名でのpassword入力は無効）
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
   
   has_many :posts
   has_many :favorites

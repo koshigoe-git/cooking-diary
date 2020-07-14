@@ -8,12 +8,6 @@
             <%= image_tag post.image.url, :size =>'250x250' %>
           <% end %>
           <div class="mb-4">投稿日:<%= post.created_at.strftime("%Y年%m月%d日") %></div>
-          <!--エラー出るため一時コメントアウト状態-->
-          <!--<div class="mb-4">
-            < %= render "favorites/likes_button", post: post %>
-            < %= post.favorites.count %>
-          </div>-->
-          
         </div>
       <% end %>
     </div>
