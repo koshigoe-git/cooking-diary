@@ -8,7 +8,6 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    #@user = User.find(params[:id])
   end
 
   def new
@@ -20,8 +19,6 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "投稿が完了しました。"
-      #createアクション実行後に更にusers#showアクションが実行され、show.html.erbを呼び出す
-      #redirect_toの@userは省略形,本来は"/users/show(@user =表示したいUserクラスのインスタンス)" or user_path(@user)となっている
       redirect_to root_url
     else
       flash.now[:danger] = "投稿に失敗しました。"
@@ -29,9 +26,16 @@ class PostsController < ApplicationController
     end
       
   end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+  end
 
   def destroy
-    #@micropostをどこかで定義する必要がある
+    #@postをどこかで定義する必要がある
     @post.destroy
     flash[:success] = "投稿を削除しました。"
     #fallback_location: root_path は、戻るべきページがない場合には root_path に戻る仕様

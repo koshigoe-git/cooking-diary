@@ -1,0 +1,26 @@
+<div class="text-center">
+  <h1>Edit Post</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @post, local: true) do |f| %>
+      <!-- 変数model = f.objectのこと,ここには8行目の@user(=@user,users#edit)が入る -->
+      <!-- f.object(=@user,users#new)で1つでもエラーがあれば表示される-->
+      <%= render "layouts/error_messages", model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :title, '料理名' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.file_field :image %>
+      </div>
+
+      <%= f.submit 'Post', class: 'mb-3 btn btn-warning btn-block' %>
+    <% end %>
+    <%= link_to "#{@post.user}の一覧へ戻る", user_path(user) %>
+  </div>
+</div>
