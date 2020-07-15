@@ -19,9 +19,9 @@
         <%= f.file_field :image %>
       </div>
 
-      <%= f.submit 'Post', class: 'mb-3 btn btn-warning btn-block' %>
+      <%= f.submit '変更する', class: 'mb-3 btn btn-warning btn-block' %>
     <% end %>
-    <!-- users#showへ戻したい -->
-    >< %= link_to "一覧へ戻る", user_path(user) %>
+    
+    <%= link_to "戻る", post_path(@post) %>
   </div>
 </div>

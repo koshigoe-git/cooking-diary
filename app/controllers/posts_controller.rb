@@ -48,8 +48,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:success] = "投稿を削除しました。"
-    #fallback_location: root_path は、戻るべきページがない場合には root_path に戻る仕様
-    redirect_back(fallback_location: root_path)
+    redirect_to root_path
   end
   
   private

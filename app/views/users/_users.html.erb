@@ -1,7 +1,12 @@
-<section>
-  <div class="text-left">
-    <h1><%= user.name %>'s cooking diary</h1>
-    <p>料理写真：<%= user.posts.count %>枚</p>
-    <p>自己紹介<br><%= user.introduce %></p>
-  </div>
-</section>
+<div class="container">
+   <section>
+    <div class="text-left">
+      <h1><%= user.name %>'s cooking diary</h1>
+      <p>料理写真：<%= user.posts.count %>枚</p>
+      <p>自己紹介<br><%= user.introduce %></p>
+      <% if current_user == user %>
+        <div class="mb-4"><%= link_to "ユーザー情報の変更", edit_user_path(user), class: "btn btn-sm btn-primary text-white" %></div>
+      <% end %>
+    </div>
+  </section> 
+</div>

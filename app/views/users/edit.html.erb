@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>Sign up</h1>
+  <h1>Edit user</h1>
 </div>
 
 <div class="row">
@@ -35,12 +35,9 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 
-      <%= f.submit 'Sign up', class: 'mb-3 btn btn-warning btn-block' %>
+      <%= f.submit '変更する', class: 'mb-3 btn btn-warning btn-block' %>
     <% end %>
     
-    <div class="text-center">
-      <%= link_to 'アカウントをお持ちの方はこちら', login_path %>
-    </div>
-    
+    <%= link_to "戻る", user_path(@user) %>
   </div>
 </div>

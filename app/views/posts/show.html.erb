@@ -6,14 +6,17 @@
     </div>
     
     <div class="col-sm-6">
-      <div>料理名:<%= @post.title %></div>
-      <% if @post.image? %>
-        <%= image_tag @post.image.url, :size =>'500x500' %>
-      <% end %>
-      <div>投稿日:<%= @post.created_at.strftime("%Y年%m月%d日") %></div>
+      <div class="mb-2">料理名:<%= @post.title %></div>
+      <div class="mb-2"><%= image_tag @post.image.url, :size =>'500x500' %></div>
+      <div class="mb-2">投稿日:<%= @post.created_at.strftime("%Y年%m月%d日") %></div>
       <div class="row">
-      <div class="ml-3"><%= render "favorites/likes_button", post: @post %></div>
-      <div class="ml-1"><%= @post.favorites.count %></div>
+        <div class="ml-3"><%= render "favorites/likes_button", post: @post %></div>
+        <div class="ml-1"><%= @post.favorites.count %></div>
+        <!-- displayed only logged_in_user -->
+        <% if current_user == @post.user %>
+          <%= link_to "編集", edit_post_path(@post), class: "ml-2 btn btn-primary btn-sm" %>
+          <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除したデータは復元できません。本当によろしいですか?" }, class: "ml-2 btn btn-danger btn-sm" %>
+        <% end %>      
       </div>
     </div>
     

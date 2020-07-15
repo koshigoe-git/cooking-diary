@@ -30,10 +30,30 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end  
   
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      flash[:success] = "編集が完了しました。"
+      redirect_to @user
+    else
+      flash.now[:danger] = "編集に失敗しました。"
+      render :edit
+    end
+    
+  end  
   private
   
   #StrongPrameter
+  def user_indroduce_params
+    params.require(:user).permit(:introduce)
+  end
+  
   def user_params
     params.require(:user).permit(:name, :email, :introduce, :password, :password_confirmation)
   end
