@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  #直打ち閲覧防止用コード
   before_action :require_user_logged_in
   before_action :correct_user, only:[:edit, :update, :destroy]
   
