@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only:[:destroy]
+  before_action :correct_user, only:[:edit, :update, :destroy]
   
   def index
     @posts = Post.all
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :image)
   end
   
-  #削除しようとしているPostが本当にログインユーザが所有しているものかを確認
+  #編集・削除しようとしているPostが本当にログインユーザが所有しているものかを確認
   def correct_user
     @post = current_user.posts.find_by(id: params[:id])
     unless @post

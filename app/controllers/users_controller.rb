@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only:[:index, :show]
+  before_action :correct_user, only:[:edit, :update]
   
   def index
     #page(params[:page]).per(取得数):ページネーションを適用
@@ -50,8 +51,13 @@ class UsersController < ApplicationController
   private
   
   #StrongPrameter
-  def user_indroduce_params
-    params.require(:user).permit(:introduce)
+  
+  #編集(削除)しようとしているUserとログインユーザが同一かを確認
+  def correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to root_url
+    end
   end
   
   def user_params
