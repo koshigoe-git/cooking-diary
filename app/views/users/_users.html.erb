@@ -4,9 +4,14 @@
       <h1><%= user.name %>'s cooking diary</h1>
       <p>料理写真：<%= user.posts.count %>枚</p>
       <p>自己紹介<br><%= user.introduce %></p>
-      <% if current_user == user %>
-        <div class="mb-4"><%= link_to "ユーザー情報の編集", edit_user_path(user), class: "btn btn-sm btn-light" %></div>
-      <% end %>
+      <div class="container">
+        <div class="row">
+          <% if current_user == user %>
+            <div class="mb-4"><%= link_to "新規投稿", new_post_path(user), class: "btn btn-sm btn-light" %></div>
+            <div class="ml-2 mb-4"><%= link_to "ユーザー情報の編集", edit_user_path(user), class: "btn btn-sm btn-light" %></div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </section> 
 </div>
