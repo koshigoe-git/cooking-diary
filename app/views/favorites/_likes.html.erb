@@ -1,0 +1,27 @@
+<div class="mb-4 border border-dark text-center"><%= "#{@user.name}さんのお気に入り一覧" %></div>
+<div class="container">
+  <div class="row">
+    <% favorite_posts.each do |favorite_post| %>
+    <!-- favorite_posts一覧を取得し、それぞれの投稿情報を変数favorite_postに入れて表示-->
+      <div class="col-sm-3">
+        <div>
+          <!-- リンク先はpost_path(post)の省略形 -->
+          料理名:<%= link_to favorite_post.title, favorite_post %>
+        </div>
+        <div class="mt-2 mb-2"><%= image_tag favorite_post.image.url, :size =>'250x250' %></div>
+        <div class="mb-2">投稿日:<%= favorite_post.created_at.strftime("%Y年%m月%d日") %></div>
+        <div class="row">
+          <span class="ml-3"><%= render "favorites/likes_button", post: favorite_post %></span>
+          <span class="ml-1"><%= favorite_post.favorites.count %></span>
+          <!--ログインユーザーのみ編集削除ボタンを表示させたい-->
+          <% if current_user == favorite_post.user %>
+            <%= link_to "編集", edit_post_path(favorite_post), class: "ml-2 btn btn-light btn-sm" %>
+            <%= link_to "削除", post_path(favorite_post), method: :delete, data: { confirm: "削除したデータは復元できません。本当によろしいですか?" }, class: "ml-2 btn btn-light btn-sm" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="m-3"><%= paginate favorite_posts %></div>

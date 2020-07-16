@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order(id: :desc).page(params[:page]).per(4)
+    @posts = @user.posts.order(id: :desc).page(params[:page]).per(8)
     counts(@user)
   end
 
@@ -47,8 +47,14 @@ class UsersController < ApplicationController
       flash.now[:danger] = "編集に失敗しました。"
       render :edit
     end
-    
-  end  
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    @favorite_posts = @user.favorite_posts.page(params[:page]).per(8)
+    counts(@user)
+  end
+  
   private
   
   #StrongPrameter
