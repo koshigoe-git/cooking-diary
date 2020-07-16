@@ -61,7 +61,8 @@ gem "kaminari"
 gem 'pry-byebug', group: :development
 
 #画像をアップロード
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'cloudinary'
 
 #Heroku用
 group :production do
