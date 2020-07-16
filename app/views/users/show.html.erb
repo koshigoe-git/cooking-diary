@@ -11,7 +11,11 @@
               <!-- リンク先はpost_path(post)の省略形 -->
               料理名:<%= link_to post.title, post %>
             </div>
-            <div class="mt-2 mb-2"><%= image_tag post.image.url, :size =>'250x250' %></div>
+            <div class="mt-2 mb-2">
+              <% if post.image? %>
+                <%= image_tag post.image.url, :size =>'250x250' %>
+              <% end %>
+            </div>
             <div class="mb-2">投稿日:<%= post.created_at.strftime("%Y年%m月%d日") %></div>
             <div class="row">
               <span class="ml-3"><%= render "favorites/likes_button", post: post %></span>
