@@ -3,22 +3,24 @@
 <!-- users（Userのモデル）が1つでもあればtrueになり、if文の中身を実行 -->
 <!-- users（Userのモデル）が1つも無ければfalseになり、if文の中身は実行されない -->
 <%if @users.any? %>
-  <!-- list-unstyled:マーク(先頭の・)無しリスト-->
-  <div class="container">
-    <div class="row">
-      <!-- users一覧を取得し、それぞれのユーザ情報を変数userに入れて表示-->
-      <% @users.each do |user| %>
-        <div class="col-sm-6">
-            <!--usersテーブルの各カラムデータを表示-->
-
-            <div class="m-1">ユーザ名：<%= user.name %>(会員No.<%= user.id %>)</div>
-            <div class="m-1">自己紹介：<%= user.introduce %></div>
-            <div class="m-1">料理写真：<%= user.posts.count %>枚</div>
-            <!-- route作成時に同時生成されたパスメソッドuser_path(user)でusers#showに移動 -->
-            <div class="mt-1 ml-1 mb-4 mr-1"><p><%= link_to "view cooking diary", user_path(user) %></p></div>
-        </div>
+  <table class="table table-hover">
+    <tr>
+        <th class="text-center">ユーザid</th>
+        <th class="text-center">名前</th>
+        <th class="text-center">投稿数</th>
+        <th class="text-center">cooking-diary</th>
+        <th class="text-center">自己紹介</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td class="text-center"><%= user.id %></td>
+      <td class="text-left"><%= user.name %></td>
+      <td class="text-center"><%= user.posts.count %>枚</td>
+      <td class="text-center"><%= link_to "view cooking diary", user_path(user) %></td>
+      <td class="text-left"><%= user.introduce %></td>
+    </tr>
     <% end %>
-    </div>
-  </div>
+  </table>
   <%= paginate @users %>
 <% end %>
+

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def index
     #page(params[:page]).per(取得数):ページネーションを適用
-    @users = User.order(id: :desc).page(params[:page]).per(8)
+    @users = User.order(id: :desc).page(params[:page]).per(10)
   end
 
   def show

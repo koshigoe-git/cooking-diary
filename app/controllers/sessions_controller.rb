@@ -7,8 +7,6 @@ class SessionsController < ApplicationController
     password = params[:session][:password]
     if login(email,password)
       flash[:success] = "ログインが完了しました。"
-      #createアクション実行後に更にusers#showアクションが実行され、show.html.erbを呼び出す
-      #redirect_toの@userは省略形,本来は"/users/show(@user =表示したいUserクラスのインスタンス)" or user_path(@user)となっている
       redirect_to root_path
     else
       flash.now[:danger] = "ログインに失敗しました。"
