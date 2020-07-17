@@ -6,7 +6,7 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     #重複は不可（大文字小文字関係なし）
                     uniqueness: { case_sensitive: false }
-  validates :introduce, presence: true, length: { maximum: 50 }
+  validates :introduce, presence: true, length: { maximum: 25 }
   
   has_secure_password
   #有効なパスワード = アルファベットと数字のみ（=仮名でのpassword入力は無効）
