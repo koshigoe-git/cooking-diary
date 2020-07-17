@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :show, :new, :create ,:edit, :update, :destroy] do
     member do
       get :likes
+      get :admin
     end
   end
   

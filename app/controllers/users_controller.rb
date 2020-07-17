@@ -62,6 +62,14 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def admin
+    if current_user == admin?
+      @users = User.order(id: :desc)
+    else
+      redirect_to root_path  
+    end
+  end
+  
   private
   
   #StrongPrameter

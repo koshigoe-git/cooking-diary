@@ -13,6 +13,9 @@
             <div class="ml-2 mb-4"><%= link_to "新規投稿", new_post_path(user), class: "btn btn-sm btn-light" %></div>
             <div class="ml-2 mb-4"><%= link_to "退会", user_path(user), method: :delete, data: { confirm: "退会後、データは復元できません。本当によろしいですか?" }, class: "ml-2 btn btn-danger btn-sm" %>
           <% end %>
+          <!-->< % if current_user == admin? %>
+            <div class="mb-4">< %= link_to "全ユーザの管理", admin_path(user), class: "btn btn-sm btn-light" %></div>
+          < % end %>-->      
         </div>
       </div>
     </div>

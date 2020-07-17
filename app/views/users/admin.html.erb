@@ -1,0 +1,14 @@
+<table class="table">
+    <tr>
+      <th class="text-center">ユーザid</th>
+      <th class="text-center">ユーザ名</th>
+      <th class="text-center">投稿数</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+        <td class="text-center"><%= user.id %></td>
+        <td class="text-left"><%= user.name %></td>
+        <td class="text-left"><%= user.posts.count %></td>
+    </tr>
+   <% end %>
+</table>
