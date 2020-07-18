@@ -1,4 +1,4 @@
-<%= render "users/users", user: @user %>
+<%= render "users/user_info", user: @user %>
 <div class="mb-4 border border-dark text-center"><%= "#{@user.name}さんの投稿一覧" %></div>
 <%if @posts.any? %>
     <!-- posts一覧を取得し、それぞれの投稿情報を変数postに入れて表示-->
