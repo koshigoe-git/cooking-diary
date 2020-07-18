@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   #直打ち閲覧防止用コード
   before_action :require_user_logged_in, only:[:index, :show]
-  before_action :correct_user, only:[:edit, :update, :destroy]
+  before_action :correct_user_for_destroy, only: [:destroy]
+  before_action :correct_user, only: [:edit, :update]
   
   def index
     #page(params[:page]).per(取得数):ページネーションを適用
@@ -65,6 +66,14 @@ class UsersController < ApplicationController
   private
   
   #StrongPrameter
+  
+  def correct_user_for_destroy
+    if current_user.admin?
+      return
+    else
+      correct_user
+    end
+  end
   
   #編集(削除)しようとしているUserとログインユーザが同一かを確認
   def correct_user
