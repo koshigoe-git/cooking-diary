@@ -15,7 +15,7 @@ class User < ApplicationRecord
   
   has_many :posts
   has_many :favorites, dependent: :destroy
-  has_many :favorite_posts, through: :favorites, source: :post
+  has_many :favorite_posts, through: :favorites, source: :post, dependent: :destroy
  
   #お気に入りは自分自身の投稿もして良いので、フォローのようにunlessメソッドは不要
   def favorite(post)
