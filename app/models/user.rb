@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }
   
   has_many :posts
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
  
   #お気に入りは自分自身の投稿もして良いので、フォローのようにunlessメソッドは不要
