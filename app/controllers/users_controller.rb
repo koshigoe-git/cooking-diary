@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only:[:index, :show]
   before_action :correct_user_for_destroy, only: [:destroy]
   before_action :correct_user, only: [:edit, :update]
+  #共通部分 @user = User.find(params[:id]) をまとめる
+  before_action :set_user, only:[:show, :edit, :update, :destroy, :likes]
   
   def index
     #page(params[:page]).per(取得数):ページネーションを適用
@@ -10,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc).page(params[:page]).per(8)
     counts(@user)
   end
@@ -35,11 +36,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end  
   
   def update
-    @user = User.find(params[:id])
     
     if @user.update(user_params)
       flash[:success] = "編集が完了しました。"
@@ -51,19 +50,21 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     flash[:success] = "退会手続きが完了しました。"
     redirect_to root_path
   end
   
   def likes
-    @user = User.find(params[:id])
     @favorite_posts = @user.favorite_posts.page(params[:page]).per(8)
     counts(@user)
   end
   
   private
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
   
   #StrongPrameter
   
